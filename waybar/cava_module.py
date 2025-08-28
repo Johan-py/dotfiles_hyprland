@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 import json
 
-BARS_NUMBER = 40
+BARS_NUMBER = 20
 # OUTPUT_BIT_FORMAT = "8bit"
 OUTPUT_BIT_FORMAT = "16bit"
 # RAW_TARGET = "/tmp/cava.fifo"

@@ -4,19 +4,20 @@
   "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
+    //"network",
     "mpris",
-    "custom/cava",
-    "gamemode",
     "privacy"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "wlr/taskbar"
   ],
   "modules-right": [
-    "tray",
-    "cpu",
+    "custom/cava",
+    "tray",    
     "memory",
     "pulseaudio",
+    "battery",
     "power-profiles-daemon"
     
   ],
@@ -94,21 +95,88 @@
       }
     ]
   },
+  
+
   "clock": {
-    "interval": 1,
-    "format": " {:%d.%m.%Y | %H:%M}  ",
-    "tooltip": false,
-    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        "format": "   {:%H:%M}",
+        "format-alt": "   {:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#8fbcbb'><b>{}</b></span>",
+                              "days":       "<span color='#88c0d0'><b>{}</b></span>",
+                              "weeks":      "<span color='#81a1c1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#5e81ac'><b>{}</b></span>",
+                              "today":      "<span color='#bf616a'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+
+
+  "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 14,
+      "icon-theme": "Numix-Circle",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "ignore-list": [
+         "kitty"
+      ],
+      "app_ids-mapping": {
+        "firefoxdeveloperedition": "firefox-developer-edition"
+      },
+      "rewrite": {
+          "Firefox Web Browser": "Firefox",
+          "Foot Server": "Terminal"
+      }
   },
+
+
+
   "tray": {
     "icon-size": 15,
     "spacing": 10
   },
-  "cpu": {
-    "interval": 30,
-    "format": " {usage}%",
-    "max-length": 10
-  },
+  //"cpu": {
+    //"interval": 30,
+    //"format": " {usage}%",
+    //"max-length": 10
+  //},
+
+   "network": {
+      "format-wifi": "{essid}",
+      "format-ethernet": "",
+      "format-disconnected": "",
+      "tooltip-format": "Connected to {essid}",
+      "tooltip-format-ethernet": "{ifname} ",
+      "on-click": "GDK_BACKEND=wayland nm-connection-editor"
+   },
+
+
+   "bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": "󰂯",
+	"format-disabled": "󰂲", // an empty format will hide the module
+	"format-connected": "󰂱",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"on-click": "blueman-manager",
+   },
+
+
   "memory": {
     "interval": 30,
     "format": " {used:0.1f} GB"
@@ -148,6 +216,25 @@
     ],
     "format-source": "",
     "format-source-muted": ""
-  }
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "interval": 5,
+  },
 
 }

@@ -24,7 +24,6 @@ tooltip {
 #mpris,
 #privacy-item,
 #bluetooth,
-#clock,
 #tray,
 #cpu,
 #power-profiles-daemon,
@@ -32,10 +31,12 @@ tooltip {
 #pulseaudio,
 #gamemode,
 #custom-cava,
+#network,
+#battery,
 #custom-updates {
     /*text-shadow: 1px 1px 2px rgb(0, 0, 0);*/
     /* text shadow, offset-x | offset-y | blur-radius | color */
-    background: #292c3c; /*#15161e default*/
+    background: #45464c; /*#15161e default*/
     /* background color */
     margin: 10px 4px 4px 4px;
     /* empty spaces around */
@@ -45,16 +46,13 @@ tooltip {
     /* pill background shadows */
     border-radius: 8px; /*Default 5*/
     /* rounded corners */
-    color: #77b5a6;
+    color: white;
 }
 
 /* extend empty space on both side of the bar,
  * value from ~/.config/hypr/hyprland.conf
  * gaps_out (8px) + border size (2px) = 10px */
 
-#clock {
-    padding-right: 5px;
-}
 
 #privacy-item {
     background: #e64553;
@@ -79,7 +77,7 @@ tooltip {
         background-color, border-left-color, border-right-color;
     transition-duration: 0.1s;
     font-size: 10px;
-    color: #c0caf5;
+    color: white;
 }
 
 #workspaces button.empty {
@@ -92,26 +90,38 @@ tooltip {
 
 #workspaces button.active {
     /* active workspace */
-    background: #7899df;
+    background: #171c23;
 
 }
 
 #workspaces button:hover {
-    background: #77b5a6;
+    background: #7d7575;
     /* hovered workspace color */
 }
 
 #power-profiles-daemon {
-    color: #c4cdf2;
+    color: white;
 }
 
 @keyframes blink {
     to {
-        background-color: #e64553;
+        background-color: red;
     }
 }
 #custom-cava {
-  color: green;
+  color: white;
   padding-right: 5px;
   letter-spacing: -5px;
+}
+
+.modules-center {
+  background: #45464c; 
+  margin: 10px 4px 4px 4px; 
+  padding: 4px 10px; 
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.185); 
+  color: white;
+  border-radius:8px;
+}
+#clock{
+  color:white;	
 }
